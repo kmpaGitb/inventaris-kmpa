@@ -1,0 +1,16 @@
+body {
+  font-family: sans-serif;
+  margin: 40px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 8px;
+  text-align: center;
+}
+th {
+  background-color: #4CAF50;
+  color: white;
+}
