@@ -1,26 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Inventaris KMPA</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Inventaris Peminjaman KMPA</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #aaa;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+  </style>
 </head>
 <body>
-  <h1>Inventaris Alat KMPA</h1>
-
-  <table border="1">
+  <h1>Daftar Alat KMPA</h1>
+  <table>
     <thead>
       <tr>
+        <th>No</th>
         <th>Nama Alat</th>
-        <th>Keterangan</th>
         <th>Lokasi</th>
-        <th>Kuantitas</th>
-        <th>Jumlah di Gudang</th>
+        <th>Kondisi</th>
+        <th>Status</th>
+        <th>Peminjam</th>
+        <th>Tanggal Pinjam</th>
+        <th>Tanggal Pengembalian</th>
       </tr>
     </thead>
     <tbody id="tabel-alat"></tbody>
   </table>
 
-  <script src="script.js"></script> 
+  <script>
+    const URL = "https://script.google.com/macros/s/AKfycbyelcy47veqaLdCtTSQwdI3bBSyVvAmkUGviVrJ5pMJwkNN8_Mp2l33k-w1zmtphPOe/exec"; // Ganti ini
+
+    fetch(URL)
+      .then(response => response.json())
+      .then(data => {
+        const tbody = document.getElementById("tabel-alat");
+        data.forEach((item, index) => {
+          const row = `
+            <tr>
+              <td>${item[0]}</td>
+              <td>${item[1]}</td>
+              <td>${item[2]}</td>
+              <td>${item[3]}</td>
+              <td>${item[4]}</td>
+              <td>${item[5]}</td>
+              <td>${item[6]}</td>
+              <td>${item[7]}</td>
+            </tr>
+          `;
+          tbody.innerHTML += row;
+        });
+      })
+      .catch(error => {
+        console.error("Gagal mengambil data:", error);
+      });
+  </script>
 </body>
 </html>
