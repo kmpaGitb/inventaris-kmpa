@@ -22,9 +22,8 @@ fetch(URL)
           <td>${item[2]}</td>
           <td>${item[3]}</td>
           <td>${item[4]}</td>
-          <td>${item[5]}</td>
+          <td>${formatTanggal(item[5])}</td>
           <td>${formatTanggal(item[6])}</td>
-          <td>${formatTanggal(item[7])}</td>
         </tr>
       `;
       tbody.innerHTML += row;
